@@ -1,0 +1,10 @@
+version: '3'
+
+services:
+  ask_my_doc_service:
+    build: .
+    command: python ask_my_doc_service/manage.py runserver 0.0.0.0:8000
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/code
