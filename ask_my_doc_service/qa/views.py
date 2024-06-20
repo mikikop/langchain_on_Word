@@ -63,7 +63,7 @@ class QuestionAnswerView(APIView):
                 # or passages)
                 answer = chain.run(input_documents=docsearch.similarity_search(question), question=question)
 
-                return Response({'answer': answer}, status=status.HTTP_200_OK)
+                return Response({'answer': answer.replace('\n', ' ')}, status=status.HTTP_200_OK)
             except Exception as e:
                 return Response({"error": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
